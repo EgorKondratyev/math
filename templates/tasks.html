@@ -2,9 +2,31 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>{{ title }}</title>
 </head>
 <body>
-
+<a href="{% url 'main_page' %}">Главная страница</a>
+{% for type in types %}
+    <a href="{{ type.get_absolute_url }}">{{ type.title }}</a>
+    <br>
+{% endfor %}
+{% for task in tasks %}
+    <form action="{% url 'tasks' current_type %}" method="post">
+        {% csrf_token %}
+        {{ task.condition }}
+        {% for key, value in answers.items %}
+            {% if key == task.pk %}
+                {% if value %}
+                    Успешно выполнено!
+                {% else %}
+                    Неверно!
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    <input type="hidden" name="answers" value="{{ answers }}">
+    <input type="number" name="{{ task.pk }}" value="-">
+    <button type="submit">Ответить</button>
+    </form>
+{% endfor %}
 </body>
 </html>

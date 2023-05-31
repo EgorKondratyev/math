@@ -17,6 +17,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from tasks.views import main_page, tasks_view
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', main_page, name='main_page'),
+    path('tasks/<int:type_id>/', tasks_view, name='tasks')
 ]
