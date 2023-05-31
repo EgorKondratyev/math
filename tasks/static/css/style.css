@@ -104,7 +104,7 @@ input[type=number] {
 }
 
 .btn {
-    max-width: 180px;
+    max-width: 170px;
     position: relative;
     color: #fff;
     background-color: #06BBCC;
@@ -116,6 +116,8 @@ input[type=number] {
 }
 
 .btn a {
+    position: relative;
+    z-index: 50;
     color: #fff;
 }
 
@@ -138,4 +140,48 @@ input[type=number] {
     border-color: #06BBCC;
     width: calc(100% - 40px);
     height: calc(100% + 10px);
+}
+
+body {
+    color: #585858;
+    padding: 1vw 5vw;
+    font-size: 18px;
+    font-weight: 500;
+    text-align: center;
+    line-height: 125%;
+    position: relative;
+    overflow: hidden;
+}
+
+body p {
+    margin: 0px 0px 20px 0px;
+}
+
+.wrapper__btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main {
+    margin: 0px 0px 20px 0px;
+}
+
+.main a {
+    font-weight: 500;
+    font-size: 22px;
+    color: #585858;
+
+}
+
+img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+}
+
+input {
+    border: 1px solid #efefef;
 }

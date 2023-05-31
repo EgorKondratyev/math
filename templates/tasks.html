@@ -1,34 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>{{ title }}</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
+
 <body>
-<a href="{% url 'main_page' %}">Главная страница</a>
-{% for type in types %}
-    <a href="{{ type.get_absolute_url }}">{{ type.title }}</a>
+    <div class="main"><a href="{% url 'main_page' %}">Главная страница</a></div>
+    {% for type in types %}
+    <div class="wrapper__btn">
+        <div class="btn"><a href="{{ type.get_absolute_url }}">{{ type.title }}</a></div>
+    </div>
     <br>
-{% endfor %}
-{% for task in tasks %}
+    {% endfor %}
+    {% for task in tasks %}
     <form action="{% url 'tasks' current_type %}" method="post">
         {% csrf_token %}
         {{ task.condition }}
         {% for key, value in answers.items %}
-            {% if key == task.pk %}
-                {% if value %}
-                    Успешно выполнено!
-                {% else %}
-                    Неверно!
-                {% endif %}
-            {% endif %}
+        {% if key == task.pk %}
+        {% if value %}
+        Успешно выполнено!
+        {% else %}
+        Неверно!
+        {% endif %}
+        {% endif %}
         {% endfor %}
-    {% if answers %}
+        {% if answers %}
         <input type="hidden" name="answers" value="{{ answers }}">
-    {% endif %}
-    <input type="number" name="{{ task.pk }}" value="-">
-    <button type="submit">Ответить</button>
+        {% endif %}
+        <input type="number" name="{{ task.pk }}" value="-">
+        <button class="btn" type="submit">Ответить</button>
     </form>
-{% endfor %}
+    {% endfor %}
 </body>
+
 </html>
