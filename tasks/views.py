@@ -21,7 +21,8 @@ def tasks_view(request, type_id):
         'types': Type.objects.all(),
     }
     if request.POST:
-        answers = ast.literal_eval(request.POST.get('answers', '{}'))
+        print(request.POST.get('answers', '{}'))
+        answers = ast.literal_eval(request.POST.get('answers', '{"test": "test"}'))
         for task_id, task_answer_user in request.POST.items():
             if task_id != 'csrfmiddlewaretoken' and task_id != 'answers' and task_answer_user:
                 task = Tasks.objects.get(pk=task_id)
