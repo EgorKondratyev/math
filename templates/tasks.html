@@ -23,7 +23,9 @@
                 {% endif %}
             {% endif %}
         {% endfor %}
-    <input type="hidden" name="answers" value="{{ answers }}">
+    {% if answers %}
+        <input type="hidden" name="answers" value="{{ answers }}">
+    {% endif %}
     <input type="number" name="{{ task.pk }}" value="-">
     <button type="submit">Ответить</button>
     </form>
