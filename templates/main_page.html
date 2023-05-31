@@ -11,7 +11,7 @@
 
 <p>Чтобы начать выполнение заданий, выберите одну из тем:</p>
 {% for type in types %}
-    <a href="{{ type.get_absolute_url }}">{{ type.title }}</a>
+    <div class="btn"><a href="{{ type.get_absolute_url }}">{{ type.title }}</a></div>
     <br>
 {% endfor %}
 </body>
