@@ -9,15 +9,27 @@
 </head>
 
 <body>
-    <div class="main"><a href="{% url 'main_page' %}">Главная страница</a></div>
-    {% for type in types %}
-    <div class="wrapper__btn">
-        <div class="btn"><a href="{{ type.get_absolute_url }}">{{ type.title }}</a></div>
-    </div>
-    <br>
-    {% endfor %}
+    <div class="header__block">
+        <div class="header__body">
+          <div class="header__logo">Logo</div>
+          <nav class="header__menu">
+            <ul class="header__list">
+                <li class="header__item">
+                    <a class="header__link" href="{% url 'main_page' %}">Главная страница</a>
+                  </li>
+              {% for type in types %}
+              <li class="header__item">
+                <a class="header__link" href="{{ type.get_absolute_url }}">{{ type.title }}</a>
+              </li>
+              {% endfor %}
+            </ul>
+          </nav>
+        </div>
+      </div>
+    <div class="main"></div>
+
     {% for task in tasks %}
-    <form action="{% url 'tasks' current_type %}" method="post">
+    <form class="form__task" action="{% url 'tasks' current_type %}" method="post">
         {% csrf_token %}
         {{ task.condition }}
         {% for key, value in answers.items %}

@@ -2,25 +2,93 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>{{ title }}</title>
-    {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+  <meta charset="UTF-8">
+  <title>{{ title }}</title>
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
 
 <body>
-    <img class="img" src="{% static 'img/1.jpg' %}" alt="">
-    Добро пожаловать в мир учебных возможностей для четвероклассников! Здесь вы найдете интерактивные задания,
-    увлекательные игры и познавательные материалы, специально разработанные для вас. Готовьтесь к захватывающим
-    приключениям в мире знаний и давайте вместе покорять новые вершины образования!
-
-    <p>Чтобы начать выполнение заданий, выберите одну из тем:</p>
-    {% for type in types %}
-    <div class="wrapper__btn">
-        <div class="btn"><a href="{{ type.get_absolute_url }}">{{ type.title }}</a></div>
+  <div class="wrapper">
+    <div class="header__block">
+      <div class="header__body">
+        <div class="header__logo">Logo</div>
+        <nav class="header__menu">
+          <ul class="header__list">
+            {% for type in types %}
+            <li class="header__item">
+              <a class="header__link" href="{{ type.get_absolute_url }}">{{ type.title }}</a>
+            </li>
+            {% endfor %}
+          </ul>
+        </nav>
+      </div>
     </div>
-    <br>
-    {% endfor %}
+    <div class="content__text">
+      <span>
+        Добро пожаловать в мир учебных возможностей для четвероклассников! Здесь вы найдете интерактивные задания,
+        увлекательные игры и познавательные материалы, специально разработанные для вас. Готовьтесь к захватывающим
+        приключениям в мире знаний и давайте вместе покорять новые вершины образования!
+      </span>
+    </div>
+    <div class="content__block">
+      <div class="content__body">
+        <div class="content__gallery">
+          <div class="content__gallery-row">
+            <div class="content__gallery-column">
+              <div class="content__gallery-item">
+                <img src="{% static 'img/1.jpg' %}" alt="1">
+              </div>
+            </div>
+            <div class="content__gallery-column">
+              <div class="content__gallery-item">
+                <img src="{% static 'img/2.jpg' %}" alt="1">
+              </div>
+            </div>
+            <div class="content__gallery-column">
+              <div class="content__gallery-item">
+                <img src="{% static 'img/3.jpg' %}" alt="1">
+              </div>
+            </div>
+          </div>
+          <div class="content__gallery-row">
+            <div class="content__gallery-column">
+              <div class="content__gallery-item">
+                <img src="{% static 'img/4.jpg' %}" alt="1">
+              </div>
+            </div>
+            <div class="content__gallery-column">
+              <div class="content__gallery-item">
+                <img src="{% static 'img/5.jpg' %}" alt="1">
+              </div>
+            </div>
+            <div class="content__gallery-column">
+              <div class="content__gallery-item">
+                <img src="{% static 'img/6.jpg' %}" alt="1">
+              </div>
+            </div>
+          </div>
+          <div class="content__gallery-row">
+            <div class="content__gallery-column">
+              <div class="content__gallery-item">
+                <img src="{% static 'img/1.jpg' %}" alt="1">
+              </div>
+            </div>
+            <div class="content__gallery-column">
+              <div class="content__gallery-item">
+                <img src="{% static 'img/5.jpg' %}" alt="1">
+              </div>
+            </div>
+            <div class="content__gallery-column">
+              <div class="content__gallery-item">
+                <img src="{% static 'img/2.jpg' %}" alt="1">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 
 </html>
